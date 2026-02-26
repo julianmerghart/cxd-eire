@@ -2,8 +2,23 @@ import hashlib
 import time
 import os
 import json
+import ctypes
+import sys
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+
+# DEBUG: Check if files exist
+print(f"Directory Contents: {os.listdir('.')}")
+
+try:
+    lib_path = os.path.abspath("./libcxd.so")
+    print(f"Attempting to load C library from: {lib_path}")
+    libcxd = ctypes.CDLL(lib_path)
+    print("✅ C Library loaded successfully.")
+except Exception as e:
+    print(f"❌ FATAL: Could not load C library. Error: {e}")
+    # This ensures Render logs show the error before the app dies
+    sys.exit(1)
 
 app = Flask(__name__)
 CORS(app)
