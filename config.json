@@ -1,0 +1,35 @@
+{
+  "deployment": {
+    "id": "cxd-global-v1",
+    "region_name": "Island of Ireland",
+    "environment": "production",
+    "node_id": "dublin_primary_01"
+  },
+  "geofence": {
+    "enabled": true,
+    "mode": "strict",
+    "required_country": "Ireland",
+    "allowed_jurisdictions": ["Republic of Ireland", "Northern Ireland", "UK"],
+    "gps_threshold_meters": 500
+  },
+  "localization": {
+    "default_language": "en",
+    "supported_languages": ["en", "ga", "fr", "ar"],
+    "auto_detect_locale": true
+  },
+  "consensus": {
+    "algorithm": "FBA",
+    "quorum_count": 3,
+    "federation_nodes": [
+      "https://dublin-node.cxd.org",
+      "https://belfast-node.cxd.org",
+      "https://london-node.cxd.org",
+      "https://un-observer.cxd.org"
+    ]
+  },
+  "security": {
+    "wipe_protocol": "RAM_ZERO_ON_COMMIT",
+    "encryption_standard": "AES-256-GCM",
+    "hashing_algorithm": "SHA-256"
+  }
+}
